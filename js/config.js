@@ -16,6 +16,6 @@ window.CONFIG = {
     inviteBody: 'Trân trọng kính mời bạn đến dự bữa tiệc chung vui cùng gia đình chúng tôi. Sự hiện diện của bạn là niềm vinh hạnh của gia đình chúng tôi.',
     date: 'Ngày 24 và 25 tháng 10 năm 2026',
   },
-  rsvpEndpoint: '',     // URL Web App của apps-script/Code.gs
+  rsvpEndpoint: 'https://script.google.com/macros/s/AKfycbzwdGkvfwwWdXnzxmO3tZq7gWQdzKb_bZB-bECxfjpBx3kPvuI1ySUBU2Vf9dtJO5XB/exec',     // URL Web App của apps-script/Code.gs
   turnstileSiteKey: '', // Tùy chọn: Site key Cloudflare Turnstile (để trống = tắt)
 };
