@@ -1,0 +1,2 @@
+Đặt ảnh cưới vào thư mục này với tên đúng là photo.jpg (chữ thường, không dấu, không khoảng trắng).
+Kích thước đề xuất 900x1300 px, định dạng JPG, dưới 200 KB.

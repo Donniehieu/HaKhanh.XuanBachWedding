@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Thiệp mời cưới Hà Khanh &amp; Xuân Bách</title>
+<meta name="theme-color" content="#f1f7f2">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Be+Vietnam+Pro:wght@300;400;500&family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700&text=%E5%9B%8D&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="locked">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <linearGradient id="lg" x1="0" x2="1"><stop offset="0" stop-color="#a30d24"/><stop offset=".5" stop-color="#e0263f"/><stop offset="1" stop-color="#a30d24"/></linearGradient>
+  <linearGradient id="pet" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#e9e0c6"/></linearGradient>
+  <linearGradient id="pet2" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbf8ee"/><stop offset="1" stop-color="#dcd1b2"/></linearGradient>
+  <g id="calla">
+    <path d="M94 150C98 205 72 255 58 300" stroke="#5d8a3d" stroke-width="7" fill="none" stroke-linecap="round"/>
+    <path d="M80 14C36 38 26 112 60 152C80 176 114 170 126 140C142 98 124 38 80 14Z" fill="url(#pet)"/>
+    <ellipse cx="84" cy="92" rx="7" ry="27" fill="#e6bf55" transform="rotate(6 84 92)"/>
+    <path d="M80 14C120 38 132 102 114 142C106 160 90 168 74 162C102 130 106 70 80 14Z" fill="url(#pet2)" opacity=".96"/>
+  </g>
+  <g id="lantern">
+    <path d="M30 0v20" stroke="#b8893a" stroke-width="1.5"/>
+    <rect x="19" y="18" width="22" height="7" rx="2" fill="#d8a94a"/>
+    <ellipse cx="30" cy="52" rx="25" ry="28" fill="url(#lg)"/>
+    <path d="M30 24v56M17 28c-6 14-6 38 0 48M43 28c6 14 6 38 0 48" stroke="#8c0a1d" stroke-opacity=".45" fill="none"/>
+    <rect x="19" y="78" width="22" height="7" rx="2" fill="#d8a94a"/>
+    <path d="M30 85v22" stroke="#d8a94a" stroke-width="2"/>
+    <path d="M30 104l-6 20M30 104v23M30 104l6 20" stroke="#e0263f" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+</defs></svg>
+
+<div id="cover" class="cover" role="dialog" aria-label="Thiệp mời cưới">
+  <div class="door l"></div><div class="door r"></div>
+  <div class="flowers" aria-hidden="true">
+    <svg class="fl a" viewBox="0 0 160 300"><use href="#calla"/></svg>
+    <svg class="fl b" viewBox="0 0 160 300"><use href="#calla"/></svg>
+  </div>
+  <div class="lanterns" aria-hidden="true">
+    <svg class="ln a" viewBox="0 0 60 130"><use href="#lantern"/></svg>
+    <svg class="ln b" viewBox="0 0 60 130"><use href="#lantern"/></svg>
+    <svg class="ln c" viewBox="0 0 60 130"><use href="#lantern"/></svg>
+    <svg class="ln d" viewBox="0 0 60 130"><use href="#lantern"/></svg>
+  </div>
+  <div class="cover-center">
+    <p class="km">Trân trọng kính mời</p>
+    <button id="open" class="seal" type="button" aria-label="Mở thiệp"><span lang="zh-Hant">囍</span></button>
+    <small>Chạm để mở thiệp</small>
+  </div>
+</div>
+
+<main>
+  <div class="petals" id="petals" aria-hidden="true"></div>
+
+  <section class="hero">
+    <p class="ann" data-text="announce">Chúng tôi trân trọng báo tin lễ vu quy của</p>
+    <h1 aria-label="Hà Khanh và Xuân Bách">
+      <span class="fx" aria-hidden="true">Hà Khanh</span>
+      <i aria-hidden="true">&amp;</i>
+      <span class="fx" aria-hidden="true">Xuân Bách</span>
+    </h1>
+    <div class="orn" aria-hidden="true"><i></i><svg viewBox="0 0 24 24" width="14" height="14"><path d="M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11z" fill="currentColor"/></svg><i></i></div>
+    <figure class="photo">
+      <img id="img" width="900" height="1300" decoding="async" alt="Ảnh cưới Hà Khanh và Xuân Bách" hidden>
+      <span id="ph">Chưa có ảnh cưới</span>
+    </figure>
+    <label class="btn ghost" id="upl" hidden>Xem thử ảnh (chỉ trên máy bạn)<input id="file" type="file" accept="image/*" hidden></label>
+    <p class="lead" data-text="date">Ngày 24 và 25 tháng 10 năm 2026</p>
+  </section>
+
+  <section class="reveal">
+    <h2 data-text="inviteTitle">Thư mời tham dự</h2>
+    <p class="letter" data-text="inviteBody">Trân trọng kính mời bạn đến dự bữa tiệc chung vui cùng gia đình chúng tôi. Sự hiện diện của bạn là niềm vinh hạnh của gia đình chúng tôi.</p>
+  </section>
+
+  <section class="band reveal">
+    <h2>Gia đình hai họ</h2>
+    <div class="two">
+      <div><h3>Nhà trai</h3><p>Ông Trần Văn Mạnh<br>Bà Đặng Thị Hồng</p></div>
+      <div><h3>Nhà gái</h3><p>Bà Nguyễn Thị Thanh Hương</p></div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <h2>Save the date</h2>
+    <div class="cal" id="cal" aria-label="Lịch tháng cưới"></div>
+    <ol class="events">
+      <li data-event="banquet"><time></time><b>Tiệc cưới</b><span class="tm"></span><em class="venue"></em><small class="addr"></small><a class="btn sm" target="_blank" rel="noopener" hidden>Xem chỉ đường</a></li>
+      <li data-event="ceremony"><time></time><b>Lễ cưới</b><span class="tm"></span><em class="venue"></em><small class="addr"></small><a class="btn sm" target="_blank" rel="noopener" hidden>Xem chỉ đường</a></li>
+    </ol>
+  </section>
+
+  <section class="band reveal">
+    <h2>Bạn có đến được không?</h2>
+    <form id="rsvp" novalidate>
+      <input name="name" maxlength="60" placeholder="Tên của bạn" autocomplete="name">
+      <div class="radios">
+        <label><input type="radio" name="attend" value="yes"> Mình sẽ đến</label>
+        <label><input type="radio" name="attend" value="no"> Rất tiếc, mình không đến được</label>
+      </div>
+      <textarea name="wish" rows="3" maxlength="500" placeholder="Lời chúc gửi đến hai bạn"></textarea>
+      <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div id="ts"></div>
+      <button class="btn" type="submit">Gửi xác nhận</button>
+      <p id="msg" role="status"></p>
+    </form>
+  </section>
+</main>
+<script defer src="js/config.js"></script>
+<script defer src="js/lib.js"></script>
+<script defer src="js/app.js"></script>
+</body>
+</html>

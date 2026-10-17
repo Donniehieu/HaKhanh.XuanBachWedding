@@ -1,0 +1,1 @@
+{"name":"thiep-cuoi","private":true,"scripts":{"test":"node --test","start":"npx serve ."}}
