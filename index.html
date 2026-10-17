@@ -17,12 +17,17 @@
   <linearGradient id="lg" x1="0" x2="1"><stop offset="0" stop-color="#a30d24"/><stop offset=".5" stop-color="#e0263f"/><stop offset="1" stop-color="#a30d24"/></linearGradient>
   <linearGradient id="pet" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#e9e0c6"/></linearGradient>
   <linearGradient id="pet2" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbf8ee"/><stop offset="1" stop-color="#dcd1b2"/></linearGradient>
+  <linearGradient id="leafg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#3f6b2f"/><stop offset="1" stop-color="#7fa95a"/></linearGradient>
+  <g id="leaf"><path d="M0 0C-26-22-38-78-6-140C26-80 26-24 0 0Z" fill="url(#leafg)"/><path d="M0 0C-3-50-3-95-6-138" stroke="#4d7a37" stroke-opacity=".55" stroke-width="1.2" fill="none"/></g>
   <g id="calla">
-    <path d="M94 150C98 205 72 255 58 300" stroke="#5d8a3d" stroke-width="7" fill="none" stroke-linecap="round"/>
-    <path d="M80 14C36 38 26 112 60 152C80 176 114 170 126 140C142 98 124 38 80 14Z" fill="url(#pet)"/>
-    <ellipse cx="84" cy="92" rx="7" ry="27" fill="#e6bf55" transform="rotate(6 84 92)"/>
-    <path d="M80 14C120 38 132 102 114 142C106 160 90 168 74 162C102 130 106 70 80 14Z" fill="url(#pet2)" opacity=".96"/>
+    <path d="M0 84C-34 72-52 36-46-6C-42-34-24-58 6-70C2-52 8-38 24-32C44-26 52 4 44 34C36 62 18 78 0 84Z" fill="url(#pet)"/>
+    <path d="M-38-8C-30-36-10-54 6-62C0-44 6-30 20-24C0-14-26-12-38-8Z" fill="#efe6cb" opacity=".8"/>
+    <path d="M6-70C2-52 8-38 24-32C40-24 44 0 38 28C30 50 14 64 0 70C12 40 14 0 6-70Z" fill="url(#pet2)" opacity=".55"/>
+    <path d="M-46-6C-42-34-24-58 6-70" stroke="#fff" stroke-width="2" fill="none" opacity=".85"/>
+    <ellipse cx="6" cy="-30" rx="5.5" ry="20" transform="rotate(12 6 -30)" fill="#e9c350"/>
+    <ellipse cx="4.5" cy="-38" rx="1.6" ry="8" transform="rotate(12 6 -30)" fill="#f6dc86"/>
   </g>
+  <g id="bouquet"><use href="#leaf" transform="translate(98 472) rotate(-40) scale(1.0 1.45)"/><use href="#leaf" transform="translate(98 472) rotate(-14) scale(1.15 1.75)"/><use href="#leaf" transform="translate(98 472) rotate(20) scale(0.95 1.35)"/><use href="#leaf" transform="translate(98 472) rotate(54) scale(0.8 0.95)"/><path d="M133 245C127 335 104 350 92 470" stroke="#587f3a" stroke-width="7.3" fill="none" stroke-linecap="round"/><path d="M197 315C186 405 146 350 124 470" stroke="#587f3a" stroke-width="6.0" fill="none" stroke-linecap="round"/><path d="M84 309C81 399 71 350 66 470" stroke="#587f3a" stroke-width="5.3" fill="none" stroke-linecap="round"/><path d="M178 132C167 222 126 350 104 470" stroke="#587f3a" stroke-width="4.2" fill="none" stroke-linecap="round"/><use href="#calla" transform="translate(205 92) rotate(34) scale(0.58)"/><use href="#calla" transform="translate(66 246) rotate(-16) scale(0.78)"/><use href="#calla" transform="translate(232 248) rotate(28) scale(0.9)"/><use href="#calla" transform="translate(150 150) rotate(10) scale(1.15)"/></g>
   <g id="lantern">
     <path d="M30 0v20" stroke="#b8893a" stroke-width="1.5"/>
     <rect x="19" y="18" width="22" height="7" rx="2" fill="#d8a94a"/>
@@ -37,8 +42,7 @@
 <div id="cover" class="cover" role="dialog" aria-label="Thiệp mời cưới">
   <div class="door l"></div><div class="door r"></div>
   <div class="flowers" aria-hidden="true">
-    <svg class="fl a" viewBox="0 0 160 300"><use href="#calla"/></svg>
-    <svg class="fl b" viewBox="0 0 160 300"><use href="#calla"/></svg>
+    <svg class="fl" viewBox="0 0 320 480"><use href="#bouquet"/></svg>
   </div>
   <div class="lanterns" aria-hidden="true">
     <svg class="ln a" viewBox="0 0 60 130"><use href="#lantern"/></svg>
@@ -47,6 +51,9 @@
     <svg class="ln d" viewBox="0 0 60 130"><use href="#lantern"/></svg>
   </div>
   <div class="cover-center">
+    <div class="cn" role="img" aria-label="Hà Khanh và Xuân Bách">
+      <span class="cfx" aria-hidden="true">Hà Khanh</span><i aria-hidden="true">&amp;</i><span class="cfx" aria-hidden="true">Xuân Bách</span>
+    </div>
     <p class="km">Trân trọng kính mời</p>
     <button id="open" class="seal" type="button" aria-label="Mở thiệp"><span lang="zh-Hant">囍</span></button>
     <small>Chạm để mở thiệp</small>
@@ -90,7 +97,7 @@
     <div class="cal" id="cal" aria-label="Lịch tháng cưới"></div>
     <ol class="events">
       <li data-event="banquet"><time></time><b>Tiệc cưới</b><span class="tm"></span><em class="venue"></em><small class="addr"></small><a class="btn sm" target="_blank" rel="noopener" hidden>Xem chỉ đường</a></li>
-      <li data-event="ceremony"><time></time><b>Lễ cưới</b><span class="tm"></span><em class="venue"></em><small class="addr"></small><a class="btn sm" target="_blank" rel="noopener" hidden>Xem chỉ đường</a></li>
+      <li data-event="ceremony"><time></time><b>Lễ Vu Quy</b><span class="tm"></span><em class="venue"></em><small class="addr"></small><a class="btn sm" target="_blank" rel="noopener" hidden>Xem chỉ đường</a></li>
     </ol>
   </section>
 

@@ -23,7 +23,8 @@ document.querySelectorAll('[data-text]').forEach((el) => {
 
 // Lịch tháng: lấy tháng từ ngày cưới đầu tiên, đánh dấu tim ở các ngày có sự kiện.
 const calEl = $('#cal');
-const dates = Object.values(EVENTS).map((e) => e.date).filter(Boolean).sort();
+const calDate = CONFIG.calendarDate || (EVENTS.ceremony || {}).date;
+const dates = calDate ? [calDate] : [];
 if (dates.length) {
   const [y, m] = dates[0].split('-').map(Number);
   const prefix = `${y}-${String(m).padStart(2, '0')}`;
@@ -35,7 +36,7 @@ if (dates.length) {
 } else calEl.hidden = true;
 
 // Hiệu ứng chữ: tách từng ký tự, hiện lần lượt sau khi mở thiệp.
-document.querySelectorAll('.fx').forEach((el) => {
+document.querySelectorAll('.fx, .cfx').forEach((el) => {
   el.innerHTML = [...el.textContent].map((c, i) =>
     `<span style="--i:${i}">${c === ' ' ? '&nbsp;' : c}</span>`).join('');
 });
@@ -47,6 +48,7 @@ document.querySelectorAll('[data-event]').forEach((li) => {
   if (!lunar) { try { lunar = lunarLabel(new Date(ev.date + 'T00:00:00')); } catch { lunar = ''; } }
   const t = li.querySelector('time');
   t.dateTime = ev.date; t.textContent = formatDate(ev.date) + (lunar ? ` (${lunar})` : '');
+  if (ev.label) li.querySelector('b').textContent = ev.label;
   li.querySelector('.tm').textContent = ev.time;
   li.querySelector('.venue').textContent = ev.venue || 'Địa điểm sẽ được cập nhật';
   li.querySelector('.addr').textContent = ev.address || '';
@@ -139,19 +141,27 @@ $('#rsvp').addEventListener('submit', async (e) => {
   if (window.turnstile) { window.turnstile.reset(); token = ''; }
 });
 
-// Tự cuộn xuống chậm rãi. Dừng ngay khi người xem chạm, cuộn, bấm phím hoặc bấm vào ô nhập.
+// Tự cuộn xuống chậm rãi. Giữ chuột/ngón tay, tự cuộn hoặc đang gõ vào ô nhập thì tạm dừng; thả ra thì chạy tiếp.
 function autoScroll() {
   if (reduce) return;
-  let y = scrollY, last = performance.now(), stopped = false;
-  const start = last, stop = () => { stopped = true; };
-  ['wheel', 'touchstart', 'pointerdown', 'keydown', 'focusin'].forEach((t) =>
-    addEventListener(t, stop, { once: true, passive: true }));
+  const SPEED = 50, IDLE_MS = 1200; // px/giây; thời gian chờ sau khi người xem thôi cuộn
+  let y = scrollY, last = performance.now(), v = 0, holding = false, idleAt = 0;
+  const hold = () => { holding = true; };
+  const release = () => { holding = false; idleAt = performance.now(); };
+  const touched = () => { idleAt = performance.now(); };
+  addEventListener('mousedown', hold, { passive: true });
+  addEventListener('touchstart', hold, { passive: true });
+  ['mouseup', 'touchend', 'touchcancel', 'blur'].forEach((t) => addEventListener(t, release, { passive: true }));
+  addEventListener('mousemove', (e) => { if (holding && e.buttons === 0) release(); }, { passive: true }); // phòng khi mất sự kiện mouseup
+  ['wheel', 'keydown'].forEach((t) => addEventListener(t, touched, { passive: true }));
+  const typing = () => /^(INPUT|TEXTAREA)$/.test(document.activeElement ? document.activeElement.tagName : '');
   const step = (now) => {
-    if (stopped || Math.abs(scrollY - y) > 3) return;      // người xem tự cuộn thì nhường quyền
-    const speed = 50 * Math.min(1, (now - start) / 2500);   // px/giây, tăng dần trong 2,5 giây đầu
-    y += speed * Math.min(now - last, 50) / 1000; last = now;
-    scrollTo(0, y);
-    if (y < document.documentElement.scrollHeight - innerHeight - 1) requestAnimationFrame(step);
+    const dt = Math.min(now - last, 50) / 1000; last = now;
+    if (Math.abs(scrollY - y) > 3) { y = scrollY; idleAt = now; }  // người xem tự cuộn (thanh cuộn, vuốt)
+    const run = !holding && !typing() && now - idleAt > IDLE_MS;
+    v += ((run ? SPEED : 0) - v) * Math.min(1, dt * (run ? 3 : 12)); // tăng tốc êm, dừng nhanh khi giữ
+    if (v > 0.5) { y += v * dt; scrollTo(0, y); } else y = scrollY;
+    if (scrollY < document.documentElement.scrollHeight - innerHeight - 1) requestAnimationFrame(step);
   };
   requestAnimationFrame(step);
 }

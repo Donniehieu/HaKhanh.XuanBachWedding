@@ -10,6 +10,7 @@ Web tĩnh, đưa lên GitHub Pages là chạy. File `index.html` nằm ở thư 
 ## Chỗ cần điền: `js/config.js`
 - `venue`, `address`: tên và địa chỉ nơi tổ chức. `time`: giờ.
 - `mapUrl`: Google Maps > tìm địa điểm > Chia sẻ > Sao chép đường liên kết > dán vào (bắt đầu bằng https://). Tiệc và lễ có link riêng.
+- `label`: tên sự kiện (ví dụ Lễ Vu Quy). `calendarDate`: ngày được đánh dấu trái tim trên lịch.
 - `lunar`: gõ tay ngày âm lịch, ví dụ `Tức ngày 15 tháng 9 năm Bính Ngọ`. Để trống thì trang tự tính (có thể lệch 1 ngày, hãy đối chiếu).
 - `rsvpEndpoint`: URL Apps Script nhận xác nhận tham dự (xem phần dưới).
 
